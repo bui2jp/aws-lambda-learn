@@ -97,8 +97,12 @@ sam init \
   --no-tracing
 ```
 
-# sam build
-
+```
+sam build, sam deploy, sam local invoke, sam logs, sam delete
 ```
 
-```
+# aws sam と CloudFormation
+
+aws sam は CloudFormation の拡張機能として提供されている
+
+terraform も利用可能だが、マルチクラウドの要件がないのであれば CloudFormation がおすすめ
