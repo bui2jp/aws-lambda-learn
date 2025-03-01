@@ -1,6 +1,7 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { lambdaHandler } from '../../app';
 import { expect, describe, it } from '@jest/globals';
+import { OfficeRegion } from '../../common/my-custom';
 
 describe('Unit test for app handler', function () {
     it('verifies successful response', async () => {
@@ -54,11 +55,13 @@ describe('Unit test for app handler', function () {
             stageVariables: {},
         };
         const result: APIGatewayProxyResult = await lambdaHandler(event);
+        //
 
+        // Verify the result
         expect(result.statusCode).toEqual(200);
         expect(result.body).toEqual(
             JSON.stringify({
-                message: 'hello world tokyo',
+                message: 'hello world ' + OfficeRegion.tokyo,
             }),
         );
     });
