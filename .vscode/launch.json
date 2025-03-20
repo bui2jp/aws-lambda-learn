@@ -3,72 +3,55 @@
     {
       "type": "aws-sam",
       "request": "direct-invoke",
-      "name": "lambda-nodejs22.x-image:HelloWorldFunction",
+      "name": "typescript:HelloWorld",
       "invokeTarget": {
-        "target": "template",
-        "templatePath": "${workspaceFolder}/lambda-nodejs22.x-image/template.yaml",
-        "logicalId": "HelloWorldFunction"
+          "target": "template",
+          "templatePath": "${workspaceFolder}/sample-09-debug-lambda/template.yaml",
+          "logicalId": "HelloWorldFunction"
       },
       "lambda": {
-        "payload": {},
-        "environmentVariables": {},
-        "runtime": "nodejs22.x"
-      }
+          "runtime": "nodejs20.x",
+          "payload": {},
+          "environmentVariables": {},
+          "pathMappings": [
+            {
+                "localRoot": "${workspaceFolder}/sample-09-debug-lambda/hello-world/dist",
+                "remoteRoot": "/var/task"
+            }
+        ]
+      },
+      "sam": {
+        "containerBuild": false,
+        "skipNewImageCheck": false
+      },
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to SAM Local",
+      "address": "localhost",
+      "port": 5858, 
+      "localRoot": "${workspaceFolder}/sample-09-debug-lambda/hello-world",
+      "remoteRoot": "/var/task",
+      "skipFiles": [
+        "<node_internals>/**",
+        "node_modules/**"
+      ],
+      "sourceMaps": true
     },
     {
       "type": "aws-sam",
       "request": "direct-invoke",
-      "name": "API lambda-nodejs22.x-image:HelloWorldFunction",
+      "name": "js HelloWorld",
       "invokeTarget": {
-        "target": "api",
-        "templatePath": "${workspaceFolder}/lambda-nodejs22.x-image/template.yaml",
-        "logicalId": "HelloWorldFunction"
-      },
-      "api": {
-        "path": "/hello",
-        "httpMethod": "get",
-        "payload": {
-          "json": {}
-        }
+          "target": "template",
+          "templatePath": "sample-10-debug-lambda-js/template.yaml",
+          "logicalId": "HelloWorldFunction"
       },
       "lambda": {
-        "runtime": "nodejs22.x"
+          "payload": {},
+          "environmentVariables": {}
       }
-    },
-    {
-      "type": "aws-sam",
-      "request": "direct-invoke",
-      "name": "lambda-nodejs22.x:HelloWorldFunction (nodejs22.x)",
-      "invokeTarget": {
-        "target": "template",
-        "templatePath": "${workspaceFolder}/lambda-nodejs22.x/template.yaml",
-        "logicalId": "HelloWorldFunction"
-      },
-      "lambda": {
-        "payload": {},
-        "environmentVariables": {},
-        "runtime": "nodejs22.x"
-      }
-    },
-    {
-      "type": "aws-sam",
-      "request": "direct-invoke",
-      "name": "API lambda-nodejs22.x:HelloWorldFunction (nodejs22.x)",
-      "invokeTarget": {
-        "target": "api",
-        "templatePath": "${workspaceFolder}/lambda-nodejs22.x/template.yaml",
-        "logicalId": "HelloWorldFunction"
-      },
-      "api": {
-        "path": "/hello",
-        "httpMethod": "get",
-        "payload": {
-          "json": {}
-        }
-      },
-      "lambda": {
-        "runtime": "nodejs22.x"
-      }
-    }
+    }    
   ]
 }
