@@ -3,13 +3,14 @@
       "target": "es2020",
       "strict": true,
       "preserveConstEnums": true,
-      "noEmit": true,
-      "sourceMap": false,
-      "module":"es2015",
+      "noEmit": false,
+      "module":"esnext",
       "moduleResolution":"node",
       "esModuleInterop": true, 
       "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,  
+      "forceConsistentCasingInFileNames": true,
+      "outDir": "dist",
+      "inlineSourceMap": true // 追加
     },
     "exclude": ["node_modules", "**/*.test.ts"]
   }

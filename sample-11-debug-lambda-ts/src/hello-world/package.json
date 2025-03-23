@@ -6,10 +6,12 @@
   "repository": "https://github.com/awslabs/aws-sam-cli/tree/develop/samcli/local/init/templates/cookiecutter-aws-sam-hello-nodejs",
   "author": "SAM CLI",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "unit": "jest",
     "lint": "eslint '*.ts' --quiet --fix",
     "compile": "tsc",
+    "bundle": "esbuild dist/hello-world/app.js --bundle --platform=node --target=es2020 --outfile=dist2/app.js --sourcemap",
     "test": "npm run compile && npm run unit"
   },
   "dependencies": {

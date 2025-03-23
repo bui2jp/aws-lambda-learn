@@ -1,5 +1,7 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 
+import { MyLib } from '../common/mylib';
+
 /**
  *
  * Event doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format
@@ -12,6 +14,14 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 
 export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     try {
+        const message = MyLib.formatMessage('Alice');
+        const timestamp = MyLib.getCurrentTimestamp();
+        const message2 = "Hello, test test!2";
+
+        console.log(message + timestamp); // Hello, Alice!
+        console.log(message2); // Hello, Alice!
+
+
         return {
             statusCode: 200,
             body: JSON.stringify({
