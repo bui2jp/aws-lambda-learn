@@ -24,13 +24,22 @@ __export(app_exports, {
 });
 module.exports = __toCommonJS(app_exports);
 
-// dist/common/mylib.js
+// ../common/mylib.ts
 var MyLib = class {
+  /**
+   * 名前をフォーマットしてメッセージを返す
+   * @param name - 名前
+   * @returns フォーマットされたメッセージ
+   */
   static formatMessage(name) {
     return `Hello, ${name}!`;
   }
+  /**
+   * 現在のタイムスタンプを取得する
+   * @returns 現在のタイムスタンプ
+   */
   static getCurrentTimestamp() {
-    return new Date().toISOString();
+    return (/* @__PURE__ */ new Date()).toISOString();
   }
 };
 

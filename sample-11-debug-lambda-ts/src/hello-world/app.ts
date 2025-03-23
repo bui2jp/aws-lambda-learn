@@ -1,6 +1,6 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 
-import { MyLib } from '../common/mylib';
+import { MyLib } from 'common/mylib';
 
 /**
  *
